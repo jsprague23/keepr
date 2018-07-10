@@ -104,7 +104,7 @@ namespace API_Users.Controllers
         [Authorize]
         [HttpPost("keeps/{vaultId}")]
         public string AddKeep(int vaultId){
-            bool success = _db.AddKeep(keepId, HttpContext.User.Identity.Name);
+            bool success = _db.AddKeep(vaultId, HttpContext.User.Identity.Name);
             if(success){
                 return "KEEP ADDED!";
             }

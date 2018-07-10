@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using API_Users.Models;
 using Dapper;
-using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 
 namespace API_Users.Repositories
@@ -128,11 +127,11 @@ namespace API_Users.Repositories
       WHERE (userId = @id)", new{id});
     }
 
-    internal bool AddKeep(int VaultId, string userId)
+    internal bool AddKeep(int vaultId, string userId)
     {
       int id = _db.Execute(@"
-        INSERT INTO userkeeps (postId, userId)
-        VALUES (@postId, @userId);
+        INSERT INTO userkeeps (vaultId, userId)
+        VALUES (@vaultId, @userId);
       ", new {
         vaultId,
         userId

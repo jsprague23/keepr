@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data;
 using System.Threading.Tasks;
 using API_Users.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
 
 namespace keeprJeremiah
 {
-    public class Startup
+  public class Startup
     {
          private readonly string _connectionString;
 
@@ -56,8 +51,8 @@ namespace keeprJeremiah
             services.AddMvc();
             services.AddTransient<IDbConnection>(x => CreateDbContext());
             services.AddTransient<UserRepository>();
-            services.AddTransient<VaultRepository>();
-            services.AddTransient<KeepRepository>();
+            // services.AddTransient<VaultRepository>();
+            // services.AddTransient<KeepRepository>();
         }
 
         private IDbConnection CreateDbContext()

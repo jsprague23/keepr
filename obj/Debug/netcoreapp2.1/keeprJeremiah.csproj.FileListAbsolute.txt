@@ -1,0 +1,4 @@
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.csprojAssemblyReference.cache
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.csproj.CoreCompileInputs.cache
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.AssemblyInfoInputs.cache
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.AssemblyInfo.cs
