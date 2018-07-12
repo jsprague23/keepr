@@ -2,7 +2,7 @@
     <div class="container-fluid" id="background">
       <div class="row">
         <div class="col">
-          
+          <Vaults></Vaults>
         </div>
       </div>
         <div class="row">

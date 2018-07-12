@@ -21,15 +21,15 @@
             <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'ProfilePage'}">Profile</router-link>
           </li>
           <li class="nav-item">
-          <router-link class="nav-link" :to="{name:'SearchResults'}" data-toggle="collapse" data-target=".navbar-collapse">
+          <!-- <router-link class="nav-link" :to="{name:'SearchResults'}" data-toggle="collapse" data-target=".navbar-collapse">
               Go To Search Field 
-            </router-link>
+            </router-link> -->
             </li>
         </ul>
-        <form @submit.prevent="getSearchResults" class="form-inline my-2 my-lg-0">
+        <!-- <form @submit.prevent="getSearchResults" class="form-inline my-2 my-lg-0">
           <input class="input" type="text" v-model="query" placeholder="ex. burger, chicken, etc.">
           <button class="button" data-toggle="collapse" data-target=".navbar-collapse" @click="getSearchResults">Search All Keeps</button>
-        </form>
+        </form> -->
         <div class="form-inline my-2 my-lg-0" v-if="!user._id">
           <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'Auth'}">login/register</router-link>
         </div>
@@ -44,7 +44,7 @@
 <script>
   import router from '../router'
   export default {
-    name: 'NavBar',
+    name: 'Navbar',
     data() {
       return {
         query: ''
@@ -59,9 +59,9 @@
       logout() {
         this.$store.dispatch('logout')
       },
-      getSearchResults() {
-        this.$store.dispatch('getSearchResults', this.query)
-      },
+      // getSearchResults() {
+      //   this.$store.dispatch('getSearchResults', this.query)
+      // },
     }
   }
 </script>

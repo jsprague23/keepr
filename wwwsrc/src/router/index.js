@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import vuex from 'vuex'
+import axios from 'axios'
 import HelloWorld from '@/components/HelloWorld'
 import Auth from "@/components/Auth"
 import Navbar from "@/components/Navbar"

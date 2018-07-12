@@ -46,8 +46,6 @@ namespace API_Users.Repositories
                     name = @Name,
                     body = @Body,
                     description = @Description
-                    vaultId = @VaultId
-                    userId = @UserId
                     WHERE id = @Id
             ", keep);
       if (i > 0)

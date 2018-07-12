@@ -2,7 +2,7 @@
   <div class="container-fluid d-flex justify-content-center">
   <div class="jumbotron ">
     <h1 class="logoFont">Disinterest</h1>
-    <h5 class="logoFont">Hey! It looks like you're trying to do something that is not allowed without signing in. If you would like full access to all of the recipes and be able to save your favorite recipes so that you can view whenever you want! It's a simple process and wont take much time! </h5>
+    <h5 class="logoFont">Hey! It looks like you're not signed in. If you would like full access to all of the things other people aren't interest in and be able to save your least favorite things, read on! It's a simple process and wont take much time! </h5>
     <div v-if="!logister">
 
       <form @submit.prevent="login">
@@ -29,7 +29,7 @@
 
 <script>
   export default {
-    name: 'auth',
+    name: 'Account',
     mounted(){
 this.$store.dispatch('authenticate')
     },
