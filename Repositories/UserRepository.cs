@@ -23,9 +23,10 @@ namespace API_Users.Repositories
       VALUES (@Id, @Username, @Email, @Password);
       ";
         creds.Password = BCrypt.Net.BCrypt.HashPassword(creds.Password);
+        var id = Guid.NewGuid().ToString();
         _db.ExecuteScalar<string>(sql, new
         {
-          Id = Guid.NewGuid().ToString(),
+          Id = id,
           Username = creds.Username,
           Email = creds.Email,
           Password = creds.Password
@@ -33,7 +34,7 @@ namespace API_Users.Repositories
 
         return new UserReturnModel()
         {
-          Id = Guid.NewGuid().ToString(),
+          Id = id,
           Username = creds.Username,
           Email = creds.Email
         };

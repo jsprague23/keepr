@@ -31,7 +31,7 @@ namespace API_Users.Controllers
                     ClaimsPrincipal principal = user.SetClaims();
                     await HttpContext.SignInAsync(principal);
                     return user;
-                }
+                   }
             }
             return null;
         }
@@ -102,9 +102,9 @@ namespace API_Users.Controllers
         }
 
         [Authorize]
-        [HttpPost("keeps/{vaultId}")]
-        public string AddKeep(int vaultId){
-            bool success = _db.AddKeep(vaultId, HttpContext.User.Identity.Name);
+        [HttpPost("keeps/{keepId}")]
+        public string AddKeep(int keepId){
+            bool success = _db.AddKeep(keepId, HttpContext.User.Identity.Name);
             if(success){
                 return "KEEP ADDED!";
             }

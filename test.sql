@@ -1,5 +1,5 @@
 -- CREATE TABLE users (
---     id int NOT NULL AUTO_INCREMENT,
+--     id VARCHAR(255) NOT NULL,
 --     username VARCHAR(20) NOT NULL,
 --     email VARCHAR(255) NOT NULL,
 --     password VARCHAR(255) NOT NULL,
@@ -8,10 +8,11 @@
 -- );
 
 -- CREATE TABLE vaults (
---     id int NOT NULL AUTO_INCREMENT,
+--     id int(255) NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(20) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
---     userId int,
+--     body VARCHAR(255) NOT NULL,
+--     userId VARCHAR(255),
 --     INDEX userId (userId),
 --     FOREIGN KEY (userId)
 --         REFERENCES users(id)
@@ -20,14 +21,16 @@
 -- );
 
 -- CREATE TABLE keeps (
---     id int NOT NULL AUTO_INCREMENT,
+--     id int(255) NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(20) NOT NULL,
+--     body VARCHAR(255) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
---     userId int,
+--     vaultId VARCHAR(255) NOT NULL,
+--     userId VARCHAR(255),
 --     INDEX userId (userId),
 --     FOREIGN KEY (userId)
---         REFERENCES users(id)
---         ON DELETE CASCADE,  
+--     REFERENCES users(id)
+--     ON DELETE CASCADE,  
 --     PRIMARY KEY (id)
 -- );
 
@@ -52,7 +55,7 @@
 --     FOREIGN KEY (keepId)
 --         REFERENCES keeps(id)
 --         ON DELETE CASCADE
--- )
+-- );
 
 
 -- USE THIS LINE FOR GET KEEPS BY VAULTID

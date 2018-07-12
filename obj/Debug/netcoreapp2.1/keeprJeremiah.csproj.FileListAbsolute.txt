@@ -2,3 +2,10 @@ C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJerem
 C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.csproj.CoreCompileInputs.cache
 C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.AssemblyInfoInputs.cache
 C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.AssemblyInfo.cs
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\bin\Debug\netcoreapp2.1\keeprJeremiah.deps.json
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\bin\Debug\netcoreapp2.1\keeprJeremiah.runtimeconfig.json
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\bin\Debug\netcoreapp2.1\keeprJeremiah.runtimeconfig.dev.json
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\bin\Debug\netcoreapp2.1\keeprJeremiah.dll
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\bin\Debug\netcoreapp2.1\keeprJeremiah.pdb
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.dll
+C:\Users\jerem\source\CodeWorks\keeprJeremiah\obj\Debug\netcoreapp2.1\keeprJeremiah.pdb
