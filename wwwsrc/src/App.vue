@@ -6,9 +6,12 @@
 </template>
 
 <script>
-  import navbar from "./components/Navbar"
+import navbar from "./components/Navbar"
 export default {
-  name: 'App'
+  name: 'App',
+  mounted(){
+    this.$store.dispatch('authenticate')
+  }
 }
 </script>
 

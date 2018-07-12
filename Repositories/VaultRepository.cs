@@ -46,7 +46,7 @@ namespace API_Users.Repositories
                 UPDATE vaults SET
                     name = @Name,
                     body = @Body,
-                    description = @Description,
+                    description = @Description
                     WHERE id = @Id
             ", vault);
       if (i > 0)

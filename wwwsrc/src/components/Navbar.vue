@@ -3,8 +3,8 @@
     
     <nav class="navbar navbar-expand-lg navbar-light">
       
-      <img class="logo" src="../../foodLogo.png" alt="">
-      <div class="navbar-brand" >FoodyMcFoodFace</div>
+      <img class="logo" src="" alt="">
+      <div class="navbar-brand" >Disinterest</div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
         </ul>
         <form @submit.prevent="getSearchResults" class="form-inline my-2 my-lg-0">
           <input class="input" type="text" v-model="query" placeholder="ex. burger, chicken, etc.">
-          <button class="button" data-toggle="collapse" data-target=".navbar-collapse" @click="getSearchResults">Search All Recipes</button>
+          <button class="button" data-toggle="collapse" data-target=".navbar-collapse" @click="getSearchResults">Search All Keeps</button>
         </form>
         <div class="form-inline my-2 my-lg-0" v-if="!user._id">
           <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'Auth'}">login/register</router-link>

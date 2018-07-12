@@ -18,7 +18,7 @@
   </template>
 
 <script>
-  
+  import Vaults from './Vaults'
   export default {
     name: 'ProfilePage',
     data() {
@@ -26,9 +26,7 @@
       }
     },
     components: {
-      Favorites,
-      groceryList,
-      Calender
+      Vaults
     },
     computed: {},
     methods: {}
@@ -37,7 +35,7 @@
 
 <style scoped>
   #background {
-    background-image: url("../assets/profilePage.jpg");
+    /* background-image: url("../assets/profilePage.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

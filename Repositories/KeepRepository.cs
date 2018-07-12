@@ -45,9 +45,9 @@ namespace API_Users.Repositories
                 UPDATE keeps SET
                     name = @Name,
                     body = @Body,
-                    description = @Description,
-                    vaultId = @VaultId,
-                    userId = @UserId,
+                    description = @Description
+                    vaultId = @VaultId
+                    userId = @UserId
                     WHERE id = @Id
             ", keep);
       if (i > 0)

@@ -18,51 +18,67 @@ var auth = axios.create({
 })
 
 export default new vuex.Store({
-      state: {
-        user: {},
-      },
-      mutations: {
-        deleteUser(state) {
-          state.user = {}
-        },
-        setUser(state, user) {
-          state.user = user
-        }
-      },
-        actions: {
-          login({ commit, dispatch }, loginCredentials) {
-            auth.post('/login', loginCredentials)
-                .then(res => {
-                    console.log("successfully logged in!")
-                    commit('setUser', res.data)
-                    router.push({ name: 'Home' })
-                })
-        },
-        logout({ commit, dispatch }) {
-            auth.delete('/logout')
-                .then(res => {
-                    console.log("Successfully logged out!")
-                    commit('deleteUser')
-                    //   router.push({name: 'Login'})
-                })
-        },
-        register({ commit, dispatch }, userData) {
-            auth.post('/register', userData)
-                .then(res => {
-                    console.log("Registration Successful")
-                    router.push({ name: 'Home' }) // I changed this to just change the component 
-                })
-        },
-        authenticate({ commit, dispatch }) {
-            api.get('/authenticate')
-                .then(res => {
-                    commit('setUser', res.data)
-                    // router.push({ name: 'Home' })
-                })
-                .catch(res => {
-                    console.log(res.data)
-                })
-        },
-        }
+  state: {
+    user: {},
+  },
+  mutations: {
+    deleteUser(state) {
+      state.user = {}
+    },
+    setUser(state, user) {
+      state.user = user
+    }
+  },
+  actions: {
+    login({
+      commit,
+      dispatch
+    }, loginCredentials) {
+      auth.post('/login', loginCredentials)
+        .then(res => {
+          console.log("successfully logged in!")
+          commit('setUser', res.data)
+          router.push({
+            name: 'Home'
+          })
+        })
+    },
+    logout({
+      commit,
+      dispatch
+    }) {
+      auth.delete('/logout')
+        .then(res => {
+          console.log("Successfully logged out!")
+          commit('deleteUser')
+          //   router.push({name: 'Login'})
+        })
+    },
+    register({
+      commit,
+      dispatch
+    }, userData) {
+      auth.post('/register', userData)
+        .then(res => {
+          console.log("Registration Successful")
+          router.push({
+            name: 'Home'
+          }) // I changed this to just change the component 
+        })
+    },
+    authenticate({
+      commit,
+      dispatch
+    }) {
+      api.get('/authenticate')
+        .then(res => {
+          commit('setUser', res.data)
+          // router.push({ name: 'Home' })
+        })
+        .catch(res => {
+          console.log(res.data)
+        })
+    },
+  }
 
-      })
+})
