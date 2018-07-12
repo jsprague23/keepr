@@ -1,0 +1,46 @@
+<template>
+    <div class="container-fluid" id="background">
+      <div class="row">
+        <div class="col">
+          
+        </div>
+      </div>
+        <div class="row">
+        <div class="col">
+          
+        </div>
+          <div class="col">
+            
+
+          </div>
+        </div>
+    </div>
+  </template>
+
+<script>
+  
+  export default {
+    name: 'ProfilePage',
+    data() {
+      return {
+      }
+    },
+    components: {
+      Favorites,
+      groceryList,
+      Calender
+    },
+    computed: {},
+    methods: {}
+  }
+</script>
+
+<style scoped>
+  #background {
+    background-image: url("../assets/profilePage.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+  }
+</style>
