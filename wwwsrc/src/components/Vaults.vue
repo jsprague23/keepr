@@ -33,7 +33,10 @@
       computed: {
         vaults() {
           return this.$store.state.vaults
-        }
+        },
+        currentUser(){
+        return this.$store.state.currentUser
+      }
       },
       methods: {
         deleteVault(id) {

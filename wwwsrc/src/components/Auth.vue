@@ -49,7 +49,7 @@ this.$store.dispatch('authenticate')
     },
     computed: {
       currentUser(){
-        return this.$store.state.user
+        return this.$store.state.currentUser
       }
     },
     methods: {

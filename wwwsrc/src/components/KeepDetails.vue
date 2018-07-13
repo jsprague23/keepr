@@ -1,5 +1,5 @@
 <template>
-  <div class="vaults">
+  <div class="KeepDetails">
     <h1 class="mt-5 h1">Keep Details</h1>
     <h1>For</h1>
     <h1>{{keep.name}}</h1>
@@ -19,7 +19,7 @@
 
 <script>
   export default {
-    name: 'vaults',
+    name: 'KeepDetails',
 
     data() {
       return {

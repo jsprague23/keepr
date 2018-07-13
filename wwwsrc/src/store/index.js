@@ -21,16 +21,16 @@ var Account = axios.create({
 
 export default new vuex.Store({
   state: {
-    user: {},
+    currentUser: {},
     Vaults: [],
     Keeps: [],
   },
   mutations: {
     deleteUser(state) {
-      state.user = {}
+      state.currentUser = {}
     },
     setUser(state, user) {
-      state.user = user
+      state.currentUser = user
     },
     setVaults(state, Vaults) {
       console.log(Vaults)
@@ -42,6 +42,7 @@ export default new vuex.Store({
     }
   },
   actions: {
+    //auth stuff
     login({
       commit,
       dispatch
@@ -91,6 +92,8 @@ export default new vuex.Store({
           console.log(res.data)
         })
     },
+    
+    //get stuff
     getVaults({
       dispatch,
       commit,
@@ -109,6 +112,22 @@ export default new vuex.Store({
         commit('setKeeps',res.data.Keeps)
       })
     },
+    //edit stuff
+    editKeep({dispatch,commit,state}){
+      api.put('/Keeps')
+      .then(res=>{
+        console.log(res)
+        commit('setKeeps',res.data.Keeps)
+      })
+    },
+    editVault({dispatch,commit,state}){
+      api.put('/Vaults')
+      .then(res=>{
+        console.log(res)
+        commit('setVaults',res.data.Vaults)
+      })
+    },
+    //delete stuff
     deleteVault({
       dispatch,
       commit

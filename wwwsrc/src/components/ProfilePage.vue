@@ -8,7 +8,7 @@
       </div>
         <div class="row">
         <div class="col">
-          <Keeps></Keeps>
+          
         </div>
           <div class="col">
           </div>
@@ -18,7 +18,6 @@
 
 <script>
   import Vaults from './Vaults'
-  import Keeps from './Keeps'
   export default {
     name: 'ProfilePage',
     data() {
@@ -26,10 +25,13 @@
       }
     },
     components: {
-      Vaults,
-      Keeps
+      Vaults
     },
-    computed: {},
+    computed: {
+      currentUser(){
+        return this.$store.state.currentUser
+      }
+    },
     methods: {}
   }
 </script>

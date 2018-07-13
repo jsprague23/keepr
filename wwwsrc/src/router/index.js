@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar"
 import ProfilePage from "@/components/ProfilePage"
 import Vaults from "@/components/Vaults"
 import Keeps from '@/components/Keeps'
-import VaultDetails from '@/components/Keep'
+import VaultDetails from '@/components/VaultDetails'
 
 Vue.use(Router)
 
