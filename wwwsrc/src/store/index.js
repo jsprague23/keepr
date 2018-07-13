@@ -77,7 +77,7 @@ export default new vuex.Store({
       commit,
       dispatch
     }) {
-      api.get('/authenticate')
+      Account.get('/authenticate')
         .then(res => {
           commit('setUser', res.data)
           // router.push({ name: 'Home' })

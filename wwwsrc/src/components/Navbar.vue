@@ -14,7 +14,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'Home'}"> Home
-              <span class="sr-only">(current)</span>
+              <!-- <span class="sr-only">(current)</span> -->
             </router-link>
           </li>
           <li class="nav-item">
