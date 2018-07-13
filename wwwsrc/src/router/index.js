@@ -7,7 +7,7 @@ import Auth from "@/components/Auth"
 import Navbar from "@/components/Navbar"
 import ProfilePage from "@/components/ProfilePage"
 import Vaults from "@/components/Vaults"
-import Keep from '@/components/Keep'
+import Keeps from '@/components/Keeps'
 import VaultDetails from '@/components/Keep'
 
 Vue.use(Router)
@@ -20,9 +20,9 @@ export default new Router({
       component:VaultDetails
     },
     {
-      path:'/Keep',
-      name:'Keep',
-      component:Keep
+      path:'/Keeps',
+      name:'Keeps',
+      component:Keeps
     },
     {
       path:'/Vaults',

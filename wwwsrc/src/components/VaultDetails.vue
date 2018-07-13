@@ -10,9 +10,10 @@
                   <router-link :to="{name: 'VaultDetails', params:{id: vault._id}}">
                     <h1 class="card-title titles">{{keep.name}}</h1>
                   </router-link>
-                  <button @click="deleteKeep(vault._id)">Delete</button>
+                  <button class"btn btn-danger" @click="deleteKeep(vault._id)">Delete</button>
                   <div v-if="currentUser._id">
                       <button class="btn btn-success" @click="createKeep">Create Keep</button>
+                      <button class="btn btn-warning" @click="editVault">Edit Vault</button>
                   </div>
                 </div>
               </div>
@@ -31,17 +32,17 @@
         }
       },
       mounted() {
-        this.$store.dispatch("getVaults")
+        this.$store.dispatch("getKeeps")
         
       },
       computed: {
         vaults() {
-          return this.$store.state.vaults
+          return this.$store.state.keeps
         }
       },
       methods: {
-        deleteVault(id) {
-          this.$store.dispatch('deleteVault',id)
+        deleteKeep(id) {
+          this.$store.dispatch('deleteKeep',id)
         }
       }
     }

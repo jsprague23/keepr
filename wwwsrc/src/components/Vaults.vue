@@ -2,6 +2,7 @@
     <div class="vaults">
       <h1 class="mt-5 h1">My Vaults</h1>
           <div class="card-columns">
+            <div v-if=currentUser._id></div>
               <div v-for="vault in vaults">
                 <div class="card col-6">
                   <img class="card-img-top" :src="vault.image">

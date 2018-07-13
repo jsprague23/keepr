@@ -3,11 +3,12 @@
       <div class="row">
         <div class="col">
           <Vaults></Vaults>
+          
         </div>
       </div>
         <div class="row">
         <div class="col">
-          
+          <Keeps></Keeps>
         </div>
           <div class="col">
           </div>
@@ -17,6 +18,7 @@
 
 <script>
   import Vaults from './Vaults'
+  import Keeps from './Keeps'
   export default {
     name: 'ProfilePage',
     data() {
@@ -24,7 +26,8 @@
       }
     },
     components: {
-      Vaults
+      Vaults,
+      Keeps
     },
     computed: {},
     methods: {}

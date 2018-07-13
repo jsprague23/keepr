@@ -23,6 +23,7 @@ export default new vuex.Store({
   state: {
     user: {},
     Vaults: [],
+    Keeps: [],
   },
   mutations: {
     deleteUser(state) {
@@ -35,6 +36,10 @@ export default new vuex.Store({
       console.log(Vaults)
       state.Vaults = Vaults
     },
+    setKeeps(state,Keeps){
+      console.log(Keeps)
+      state.Keeps = Keeps
+    }
   },
   actions: {
     login({
@@ -97,6 +102,13 @@ export default new vuex.Store({
           commit('setVaults', res.data.Vaults)
         })
     },
+    getKeeps({dispatch, commit, state}){
+      api.get('/Keeps')
+      .then(res=>{
+        console.log(res)
+        commit('setKeeps',res.data.Keeps)
+      })
+    },
     deleteVault({
       dispatch,
       commit
@@ -105,6 +117,12 @@ export default new vuex.Store({
         .then(res => {
           dispatch('getVaults')
         })
+    },
+    deleteKeep({dispatch, commit}, id){
+      api.delete('./Keeps'+id)
+      .then(res=>{
+        dispatch('getKeeps')
+      })
     }
   }
 
