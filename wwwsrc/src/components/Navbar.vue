@@ -3,17 +3,16 @@
     
     <nav class="navbar navbar-expand-lg navbar-light">
       
-      <img class="logo" src="" alt="">
-      <div class="navbar-brand" >Disinterest</div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      <!-- <img class="logo" src="" alt=""> -->
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'Home'}"> Home
+            <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'Home'}"> Disinterest
               <!-- <span class="sr-only">(current)</span> -->
             </router-link>
           </li>
@@ -33,7 +32,7 @@
         <div class="form-inline my-2 my-lg-0" v-if="!user._id">
           <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" :to="{name: 'Auth'}">login/register</router-link>
         </div>
-        <div class="user form-inline my-2 my-lg-0" v-else>{{user.userName}}
+        <div class="user form-inline my-2 my-lg-0" v-else>{{currentUser}}
         </div>
         <button class="button" v-if="user._id" @click="logout">Log Out</button>
       </div>
@@ -113,7 +112,7 @@
   margin-right: 1rem
 }
 .button{
-  margin-left: .5rem;
+  margin-left: 1rem;
   background-color: rgb(153, 206, 122);
   border: rgb(133, 133, 133) solid .1rem;
 }

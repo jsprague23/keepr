@@ -29,8 +29,8 @@ export default new vuex.Store({
     deleteUser(state) {
       state.currentUser = {}
     },
-    setUser(state, user) {
-      state.currentUser = user
+    setUser(state, currentUser) {
+      state.currentUser = currentUser
     },
     setVaults(state, Vaults) {
       console.log(Vaults)
