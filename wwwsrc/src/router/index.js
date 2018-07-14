@@ -9,15 +9,21 @@ import ProfilePage from "@/components/ProfilePage"
 import Vaults from "@/components/Vaults"
 import Keeps from '@/components/Keeps'
 import VaultDetails from '@/components/VaultDetails'
+import KeepDetails from '@/components/KeepDetails'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path:'/VaultDetails',
+      path:'/Vaults/:id',
       name:'VaultDetails',
       component:VaultDetails
+    },
+    {
+      path:'/Keeps/:id',
+      name:'KeepDetails',
+      component:KeepDetails
     },
     {
       path:'/Keeps',

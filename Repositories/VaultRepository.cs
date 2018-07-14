@@ -24,10 +24,10 @@ namespace API_Users.Repositories
       return newVault;
     }
     // GetAll Vault
-    public IEnumerable<Vault> GetAll()
-    {
-      return _db.Query<Vault>("SELECT * FROM vaults;");
-    }
+    // public IEnumerable<Vault> GetAll()
+    // {
+    //   return _db.Query<Vault>("SELECT * FROM vaults;");
+    // }
     // GetbyUser
     public IEnumerable<Vault> GetbyUserId(int id)
     {

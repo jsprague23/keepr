@@ -25,6 +25,8 @@
 --     name VARCHAR(20) NOT NULL,
 --     body VARCHAR(255) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
+--     views int (255),
+--     keepCount int (255),
 --     vaultId VARCHAR(255) NOT NULL,
 --     userId VARCHAR(255),
 --     INDEX userId (userId),

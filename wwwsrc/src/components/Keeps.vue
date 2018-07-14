@@ -4,10 +4,10 @@
     <h1>For</h1>
     <h1>{{Keeps.name}}</h1>
     <div class="card-columns">
-      <div v-for="vault in vaults">
+      <div v-for="keep in keeps">
         <div class="card col-6">
           <!-- <img class="card-img-top" :src="vault.image"> -->
-          <router-link :to="{name: 'VaultDetails', params:{id: vault._id}}">
+          <router-link :to="{name: 'keepDetails', params:{id: keep.id}}">
             <h1 class="card-title titles">{{keep.name}}</h1>
           </router-link>
           <div v-if="currentUser._id">
@@ -35,8 +35,11 @@
 
     },
     computed: {
-      vaults() {
+      keeps() {
         return this.$store.state.Keeps
+      },
+      currentUser(){ 
+        return this.$store.state.currentUser
       }
     },
     methods: {
