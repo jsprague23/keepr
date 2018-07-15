@@ -24,6 +24,7 @@ export default new vuex.Store({
     currentUser: {},
     Vaults: [],
     Keeps: [],
+    userKeeps: [],
   },
   mutations: {
     deleteUser(state) {
@@ -38,8 +39,13 @@ export default new vuex.Store({
     },
     setKeeps(state,Keeps){
       console.log(Keeps)
+      state.userKeeps = Keeps
+    },
+    setUserKeeps(state,Keeps){
+      console.log(Keeps)
       state.Keeps = Keeps
     }
+
   },
   actions: {
     //auth stuff
@@ -92,6 +98,28 @@ export default new vuex.Store({
           console.log(res.data)
         })
     },
+
+    //create stuff
+
+    createVaultKeep({commit,dispatch,state},vaultKeep){
+      api.post("/keep/createVaultKeep/"+ vaultKeep.keepId, vaultKeep)
+      .then(res=>{
+        console.log(res.data)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    },
+
+    createVault({commit,dispatch,state}, vault){
+      api.post("/vault/", vault)
+      .then(res=>{
+        console.log(res.data)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    },
     
     //get stuff
     getVaults({
@@ -104,12 +132,28 @@ export default new vuex.Store({
           console.log(res)
           commit('setVaults', res.data.Vaults)
         })
+        .catch(err=>{
+          console.log(err)
+        })
     },
-    getKeeps({dispatch, commit, state}){
+    getKeeps({dispatch, commit}){
       api.get('/Keeps')
       .then(res=>{
         console.log(res)
         commit('setKeeps',res.data.Keeps)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    },
+    getVaultKeeps({dispatch, commit},id){
+      api.get('/vault/keeps/'+id)
+      .then(res=>{
+        console.log(res)
+        commit('setUserKeeps',res.data)
+      })
+      .catch(err=>{
+        console.log(err)
       })
     },
     //edit stuff
@@ -119,12 +163,18 @@ export default new vuex.Store({
         console.log(res)
         commit('setKeeps',res.data.Keeps)
       })
+      .catch(err=>{
+        console.log(err)
+      })
     },
     editVault({dispatch,commit,state}){
       api.put('/Vaults')
       .then(res=>{
         console.log(res)
         commit('setVaults',res.data.Vaults)
+      })
+      .catch(err=>{
+        console.log(err)
       })
     },
     //delete stuff
@@ -136,11 +186,17 @@ export default new vuex.Store({
         .then(res => {
           dispatch('getVaults')
         })
+        .catch(err=>{
+          console.log(err)
+        })
     },
     deleteKeep({dispatch, commit}, id){
       api.delete('./Keeps'+id)
       .then(res=>{
         dispatch('getKeeps')
+      })
+      .catch(err=>{
+        console.log(err)
       })
     }
   }
