@@ -15,8 +15,8 @@ namespace API_Users.Repositories
     public Keep CreateKeep(Keep newKeep)
     {
       int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keeps (name, body, description, vaultId, userId)
-                VALUES (@Name, @Body, @Description, @VaultId, @UserId);
+                INSERT INTO keeps (name, body, description, views, keepCount, vaultId, userId)
+                VALUES (@Name, @Body, @Description, @Views, @KeepCount, @VaultId, @UserId);
                 SELECT LAST_INSERT_ID();
             ", newKeep);
       newKeep.Id = id;
@@ -25,7 +25,7 @@ namespace API_Users.Repositories
     // GetAll Keep
     public IEnumerable<Keep> GetAll()
     {
-      return _db.Query<Keep>("SELECT * FROM keeps;");
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE publicKeep = true;");
     }
     // GetbyUser
     public IEnumerable<Keep> GetbyUserId(int id)

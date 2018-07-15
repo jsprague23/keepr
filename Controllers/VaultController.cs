@@ -27,11 +27,11 @@ namespace API_Users.Controllers
       return null;
     }
     //get all Vaults
-    [HttpGet]
-    public IEnumerable<Vault> GetAll()
-    {
-      return _db.GetAll();
-    }
+    // [HttpGet]
+    // public IEnumerable<Vault> GetAll()
+    // {
+    //   return _db.GetAll();
+    // }
     //get Vault by id
     [HttpGet("{id}")]
     public Vault GetById(int id)
