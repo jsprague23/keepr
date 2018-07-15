@@ -3,7 +3,7 @@
   <div class="jumbotron ">
     <h1 class="logoFont">Disinterest</h1>
     <h5 class="logoFont">Hey! It looks like you're not signed in. If you would like full access to all of the things other people aren't interest in and be able to save your least favorite things, read on! It's a simple process and wont take much time! </h5>
-    <div v-if="!logister">
+    <div v-if="currentUser">
 
       <form @submit.prevent="login">
         <input type="text" placeholder="Email" v-model="log.email">
@@ -11,8 +11,7 @@
         <button type="submit">login</button>
       </form>
       <p @click="regLog">Don't have a username? Register here</p>
-    </div>
-   <div v-else>  
+     
 
      <form @submit.prevent="userRegister" >
        <input type="text" placeholder="Email" v-model="newUser.email">
@@ -21,7 +20,10 @@
        <button type="submit">register</button>
       </form>
       <p @click="regLog">Already a user? Login Here!</p>
-   </div>
+    </div>
+    <div v-else> 
+    <h1>Oops! Something went wrong!</h1>
+    </div>
    
    </div>
   </div>

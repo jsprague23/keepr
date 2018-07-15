@@ -10,11 +10,17 @@ import Vaults from "@/components/Vaults"
 import Keeps from '@/components/Keeps'
 import VaultDetails from '@/components/VaultDetails'
 import KeepDetails from '@/components/KeepDetails'
+import Modal from '@/components/Modal'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/Modal',
+      name:'Modal',
+      component:Modal
+    },
     {
       path:'/Vaults/:id',
       name:'VaultDetails',

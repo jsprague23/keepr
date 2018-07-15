@@ -2,7 +2,7 @@
   <div class="Keeps">
     <h1 class="mt-5 h1">My Keeps</h1>
     <h1>For</h1>
-    <h1>{{Keeps.name}}</h1>
+    <h1>{{currentUser.name}}</h1>
     <div class="card-columns">
       <div v-for="keep in keeps">
         <div class="card col-6">
@@ -10,8 +10,8 @@
           <router-link :to="{name: 'keepDetails', params:{id: keep.id}}">
             <h1 class="card-title titles">{{keep.name}}</h1>
           </router-link>
-          <div v-if="currentUser._id">
-            <button class="btn btn-success" @click="createKeep">Create Keep</button>
+          <div>
+            <button class="btn btn-success" @click="Modal">Create Keep</button>
             <button class="btn btn-danger" @click="deleteKeep(keep._id)">Delete</button>
           </div>
         </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+  import Modal from './Modal'
   export default {
     name: 'Keeps',
 
