@@ -107,7 +107,7 @@ export default new vuex.Store({
     //create stuff
 
     createVaultKeep({commit,dispatch,state},vaultKeep){
-      api.post("/VaultKeep/"+ vaultKeep.keepId, vaultKeep)
+      api.post("api/VaultKeep/"+ vaultKeep.keepId, vaultKeep)
       .then(res=>{
         console.log(res.data)
       })
@@ -117,7 +117,7 @@ export default new vuex.Store({
     },
 
     createVault({commit,dispatch,state}, vault){
-      api.post("/Vault", vault)
+      api.post("api/Vault", vault)
       .then(res=>{
         console.log(res.data)
       })
@@ -126,7 +126,7 @@ export default new vuex.Store({
       })
     },
     createKeep({commit,dispatch,state}, keep){
-      api.post("/Keep", keep)
+      api.post("api/Keep", keep)
       .then(res=>{
         console.log(res.data)
       })
@@ -141,7 +141,7 @@ export default new vuex.Store({
       commit,
       state
     },id) {
-      api.get('/Vault/'+id)
+      api.get('api/Vault/'+id)
         .then(res => {
           console.log(res)
           commit('setUserVaults', res.data.userVaults)
@@ -151,7 +151,7 @@ export default new vuex.Store({
         })
     },
     getKeeps({dispatch, commit}){
-      api.get('/Keep')
+      api.get('api/Keep')
       .then(res=>{
         console.log(res)
         commit('setKeeps',res.data.Keeps)
@@ -161,7 +161,7 @@ export default new vuex.Store({
       })
     },
     getVaultKeeps({dispatch, commit},id){
-      api.get('/Vault/keeps/'+id)
+      api.get('api/VaultKeeps/'+id)
       .then(res=>{
         console.log(res)
         commit('setUserKeeps',res.data)
@@ -172,7 +172,7 @@ export default new vuex.Store({
     },
     //edit stuff
     editKeep({dispatch,commit,state}){
-      api.put('/Keep')
+      api.put('api/Keep')
       .then(res=>{
         console.log(res)
         commit('setKeeps',res.data.Keeps)
@@ -182,7 +182,7 @@ export default new vuex.Store({
       })
     },
     editVault({dispatch,commit,state},id){
-      api.put('/Vault/'+id)
+      api.put('api/Vault/'+id)
       .then(res=>{
         console.log(res)
         commit('setVaults',res.data.Vaults)
@@ -196,7 +196,7 @@ export default new vuex.Store({
       dispatch,
       commit
     }, id) {
-      api.delete('/Vault/' + id)
+      api.delete('api/Vault/' + id)
         .then(res => {
           dispatch('getVaults')
         })
@@ -205,7 +205,7 @@ export default new vuex.Store({
         })
     },
     deleteKeep({dispatch, commit}, id){
-      api.delete('./Keeps'+id)
+      api.delete('api/Keeps'+id)
       .then(res=>{
         dispatch('getKeeps')
       })

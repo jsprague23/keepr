@@ -14,8 +14,8 @@ namespace API_Users.Controllers
     {
       _db = repo;  
     }
-    [HttpPost]
     [Authorize]
+    [HttpPost]
     public Vault CreateVault([FromBody]Vault newVault)
     {
       if(ModelState.IsValid)

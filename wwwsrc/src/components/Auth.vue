@@ -7,7 +7,7 @@
 
       <form @submit.prevent="login">
         <input type="text" placeholder="Email" v-model="log.email">
-        <input type="password" v-model="log.password">
+        <input type="password" placeholder="Enter password"v-model="log.password">
         <button type="submit">login</button>
       </form>
       <p @click="regLog">Don't have a username? Register here</p>
@@ -53,7 +53,7 @@ this.$store.dispatch('authenticate')
     },
     methods: {
       login(){
-        this.$store.dispatch('login', this.log)
+        this.$store.dispatch('login', this.login)
       },
       userRegister(){
         this.$store.dispatch('register', this.newUser)
