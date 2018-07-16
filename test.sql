@@ -20,22 +20,23 @@
 --     PRIMARY KEY (id)
 -- );
 
-CREATE TABLE keeps (
-    id int(255) NOT NULL AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
-    body VARCHAR(255) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    publicKeep tinyint,
-    views int (255),
-    keepCount int (255),
-    vaultId VARCHAR(255) NOT NULL,
-    userId VARCHAR(255),
-    INDEX userId (userId),
-    FOREIGN KEY (userId)
-    REFERENCES users(id)
-    ON DELETE CASCADE,  
-    PRIMARY KEY (id)
-);
+-- CREATE TABLE keeps (
+--     id int(255) NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(20) NOT NULL,
+--     body VARCHAR(255) NOT NULL,
+--     description VARCHAR(255) NOT NULL,
+--     publicKeep tinyint,
+--     image VARCHAR(255),
+--     views int (255),
+--     keepCount int (255),
+--     vaultId VARCHAR(255) NOT NULL,
+--     userId VARCHAR(255),
+--     INDEX userId (userId),
+--     FOREIGN KEY (userId)
+--     REFERENCES users(id)
+--     ON DELETE CASCADE,  
+--     PRIMARY KEY (id)
+-- );
 
 -- CREATE TABLE vaultkeeps (
 --     id int NOT NULL AUTO_INCREMENT,
