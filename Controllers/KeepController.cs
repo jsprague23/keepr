@@ -46,9 +46,12 @@ namespace API_Users.Controllers
     }
     //edit Keep
     [HttpPut("{id}")]
+    [Authorize]
     public Keep EditKeep(int id, [FromBody]Keep newKeep)
     {
       return _db.EditKeep(id, newKeep);
     }
+
+    
   }
 }
