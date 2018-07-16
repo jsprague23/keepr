@@ -9,9 +9,9 @@
 </template>
 
 <script>
-  import Keeps from './Keeps'
+  import Keeps from "./Keeps"
   export default {
-    name: 'HelloWorld',
+    name: 'Home',
     components: {
       Keeps
     }
