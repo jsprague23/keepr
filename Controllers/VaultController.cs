@@ -39,12 +39,16 @@ namespace API_Users.Controllers
       return _db.GetbyVaultId(id);
     }
     //get Vault by author
-    [HttpGet("user/{id}")]
-    public IEnumerable<Vault> GetByUserId(int id)
+    [HttpGet]
+    [Authorize]
+    public IEnumerable<Vault> GetByUserId()
     {
+      var user = HttpContext.User;
+      var id = user.Identity.Name;
       return _db.GetbyUserId(id);
     }
     //edit Vault
+    [Authorize]
     [HttpPut("{id}")]
     public Vault EditVault(int id, [FromBody]Vault newVault)
     {

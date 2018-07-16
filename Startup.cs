@@ -51,7 +51,7 @@ namespace keeprJeremiah
             services.AddMvc();
             services.AddTransient<IDbConnection>(x => CreateDbContext());
             services.AddTransient<UserRepository>();
-            // services.AddTransient<VaultRepository>();
+            services.AddTransient<VaultRepository>();
             services.AddTransient<KeepRepository>();
         }
 

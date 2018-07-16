@@ -29,7 +29,7 @@ namespace API_Users.Repositories
     //   return _db.Query<Vault>("SELECT * FROM vaults;");
     // }
     // GetbyUser
-    public IEnumerable<Vault> GetbyUserId(int id)
+    public IEnumerable<Vault> GetbyUserId(string id)
     {
       return _db.Query<Vault>("SELECT * FROM vaults WHERE userId = @id;", new { id });
     }
