@@ -28,7 +28,6 @@
 --     image VARCHAR(255),
 --     views int (255),
 --     keepCount int (255),
---     vaultId VARCHAR(255) NOT NULL,
 --     userId VARCHAR(255),
 --     INDEX userId (userId),
 --     FOREIGN KEY (userId)

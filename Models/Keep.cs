@@ -11,7 +11,6 @@ public string Description {get; set;}
 public string Body { get; set; }
 public bool PublicKeep {get; set;}
 public string UserId { get; set; }
-public string VaultId {get; set; }
 public int Views {get; set;}
 public int KeepCount {get; set;}
 // public List<Tag> Tags {get; set;}

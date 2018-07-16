@@ -8,8 +8,6 @@
         </router-link>
         <h3 class="logoFont">{{Vault.Description}}</h3>
         <h4 class="logoFont">Vault Author: {{currentUser.name}}</h4>
-        <h4 class="logoFont">{{Vault.Body}}</h4>
-        
         <button class="btn btn-danger" @click="deleteVault(Vault.id)">Delete</button>
         </div>
     </div>

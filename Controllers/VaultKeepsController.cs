@@ -1,0 +1,44 @@
+using Microsoft.AspNetCore.Mvc;
+using API_Users.Repositories;
+using API_Users.Models;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+
+namespace API_Users.Controllers
+{
+  [Route("api/[controller]")]
+  public class VaultKeepsController : Controller
+  {
+    private readonly VaultKeepsRepository _db;
+    public VaultKeepsController(VaultKeepsRepository repo)
+    {
+      _db = repo;  
+    }
+    [Authorize]
+    [HttpPost]
+    public VaultKeeps CreateVaultKeep([FromBody]VaultKeeps newVaultKeep)
+    {
+      if(ModelState.IsValid)
+      {
+        var user = HttpContext.User;
+        newVaultKeep.UserId = user.Identity.Name;
+        return _db.CreateVaultKeep(newVaultKeep);
+      }
+      return null;
+    }
+    [HttpGet("{id}")]
+    public Vault GetById(int id)
+    {
+      return _db.GetbyVaultKeepId(id);
+    }
+    //get Vault by author
+    [HttpGet]
+    [Authorize]
+    public IEnumerable<VaultKeeps> GetByUserId()
+    {
+      var user = HttpContext.User;
+      var id = user.Identity.Name;
+      return _db.GetbyUserId(id);
+    }
+  }
+}
