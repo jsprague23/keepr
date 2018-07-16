@@ -1,8 +1,6 @@
 <template>
   <div class="Keeps container-fluid d-flex justify-content-center">
     <h1>My Keeps</h1>
-    <h1>For</h1>
-    <h1>{{currentUser.Name}}</h1>
     <div class="row">
       <div v-for="Keep in Keeps" class="col">
         <router-link :to="{name: 'KeepDetails', params:{id: keep.id}}">
@@ -20,8 +18,6 @@
     </div>
     <div class="row">
       <div class="card-columns">
-        <button @click="toggleModal(1)">Create a Keep</button>
-
         <div>
           <button @click="toggleModal(1)">Create a Keep</button>
           <modal :toggle="showModal">
@@ -30,7 +26,7 @@
             </div>
             <div>
               <form @submit.prevent="createKeep">
-                <input type="text" v-model="newKeep.name" required>
+                <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
                 <button type="submit">Create Keep</button>
@@ -80,11 +76,11 @@
       deleteKeep(id) {
         this.$store.dispatch('deleteKeep', id)
       },
-      createKeep(id) {
-        this.$store.dispatch('createKeep', id)
+      createKeep() {
+        this.$store.dispatch('createKeep', this.createKeep)
         this.toggleModal(-1)
       },
-      toggle(n) {
+      toggleModal(n) {
         this.showModal += n
       },
     }
