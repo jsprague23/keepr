@@ -9,26 +9,19 @@
           <Vaults></Vaults>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <Keeps></Keeps>
-        </div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
   import Vaults from './Vaults'
-  import Keeps from './Keeps'
   export default {
     name: 'ProfilePage',
     data() {
       return {}
     },
     components: {
-      Vaults,
-      Keeps
+      Vaults
     },
     computed: {
       currentUser() {

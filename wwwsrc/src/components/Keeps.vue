@@ -1,9 +1,9 @@
 <template>
   <div class="Keeps container-fluid d-flex justify-content-center">
-    <h1>My Keeps</h1>
+    <h1>Find Disinteresting Things!</h1>
     <div class="row">
       <div v-for="Keep in Keeps" class="col">
-        <router-link :to="{name: 'KeepDetails', params:{id: keep.id}}">
+        <router-link :to="{name: 'KeepDetails', params:{id: keep.id}}" @click="Views">
           <h1 class="card-title titles">{{Keep.name}}</h1>
         </router-link>
         <h3 class="logoFont">{{Keep.Description}}</h3>
@@ -12,8 +12,9 @@
         <h4 class="logoFont">Keeps: {{Keep.KeepCount}}</h4>
         <h4 class="logoFont">{{Keep.image}}</h4>
         <button v-if="currentUser.id == Keep.currentUser.id" class="btn btn-danger" @click="deleteKeep(Keep._id)">Delete</button>
-        <button class="btn btn-warning" @click="">Make Public</button>
-        <button class="btn btn-warning" @click="">Make Private</button>
+        <button v-if="currentUser.id == Keep.currentUser.id" class="btn btn-warning" @click="">Make Public</button>
+        <button v-if="currentUser.id == Keep.currentUser.id" class="btn btn-warning" @click="">Make Private</button>
+        <button class="btn btn-success" @click="addKeep(keep)">Add Keep</button>
       </div>
     </div>
     <div class="row">
@@ -54,7 +55,9 @@
           name: '',
           Image: '',
           Description: ''
-        }
+
+        },
+        vaultId:''
       }
     },
     mounted() {
@@ -73,6 +76,13 @@
       }
     },
     methods: {
+      addKeep(keep){        
+        // this.$store.state.userKeeps(id)
+        // alert("Added to Favorites")
+        keep.keepCount++ 
+        //send put request to update keep
+        // dispatch create vault keep passing it the keepid & this.vaultId
+    },
       deleteKeep(id) {
         this.$store.dispatch('deleteKeep', id)
       },
