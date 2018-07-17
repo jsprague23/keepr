@@ -22,7 +22,6 @@
 -- CREATE TABLE keeps (
 --     id int(255) NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(20) NOT NULL,
---     body VARCHAR(255) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
 --     publicKeep tinyint,
 --     image VARCHAR(255),
@@ -36,11 +35,11 @@
 --     PRIMARY KEY (id)
 -- );
 
--- CREATE TABLE vaultkeeps (
+-- CREATE TABLE vaultKeeps (
 --     id int NOT NULL AUTO_INCREMENT,
 --     vaultId int NOT NULL,
 --     keepId int NOT NULL,
---     userId int NOT NULL,
+--     userId VARCHAR(255) NOT NULL,
 
 --     PRIMARY KEY (id),
 --     INDEX (vaultId, keepId),

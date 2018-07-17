@@ -15,8 +15,8 @@ namespace API_Users.Repositories
     public Keep CreateKeep(Keep newKeep)
     {
       int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keeps (name, body, description, image, views, keepCount, userId)
-                VALUES (@Name, @Body, @Description, @Image, @Views, @KeepCount, @UserId);
+                INSERT INTO keeps (name, description, image, views, keepCount, userId)
+                VALUES (@Name, @Description, @Image, @Views, @KeepCount, @UserId);
                 SELECT LAST_INSERT_ID();
             ", newKeep);
       newKeep.Id = id;

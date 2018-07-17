@@ -27,9 +27,9 @@ namespace API_Users.Controllers
       return null;
     }
     [HttpGet("{id}")]
-    public Vault GetById(int id)
+    public VaultKeeps GetByVaultId(int id)
     {
-      return _db.GetbyVaultKeepId(id);
+      return _db.GetByVaultId(id);
     }
     //get Vault by author
     [Authorize]

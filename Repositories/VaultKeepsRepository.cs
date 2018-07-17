@@ -25,16 +25,16 @@ namespace API_Users.Repositories
     }
 
     // GetbyUser
-    public IEnumerable<VaultKeeps> GetbyUserId(int id)
+    public IEnumerable<VaultKeeps> GetbyUserId(string id)
     {
       return _db.Query<VaultKeeps>("SELECT * FROM vaultKeeps WHERE userId = @id;", new { id });
     }
-    // GetbyId
-    public Vault GetbyVaultKeepId(int id)
+    // GetbyVaultId
+    public VaultKeeps GetByVaultId(int id)
     {
-      return _db.QueryFirstOrDefault<Vault>("SELECT * FROM vaultKeeps WHERE id = @id;", new { id });
+      return _db.QueryFirstOrDefault<VaultKeeps>("SELECT * FROM vault WHERE id = @id;", new { id });
     }
-
+    
     // Delete
     public bool DeleteVaultKeep(int id)
     {
