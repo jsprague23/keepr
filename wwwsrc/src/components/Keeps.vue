@@ -12,8 +12,9 @@
         <h4 class="logoFont">Keeps: {{Keep.KeepCount}}</h4>
         <h4 class="logoFont">{{Keep.image}}</h4>
         <button v-if="user.id == keep.userid" class="btn btn-danger" @click="deleteKeep(Keep._id)">Delete</button>
-        <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Public</button>
-        <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Private</button>
+        <!-- <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Public</button>
+        <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Private</button> -->
+        
         <select @ click="addKeep(Keep)" v-model="selected">
           <option disabled value="vaultId">Please select one</option>
           <option v-for="Vault in Vaults">{{vault.name}}</option>

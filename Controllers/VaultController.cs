@@ -39,8 +39,8 @@ namespace API_Users.Controllers
       return _db.GetbyVaultId(id);
     }
     //get Vault by author
-    [HttpGet]
     [Authorize]
+    [HttpGet]
     public IEnumerable<Vault> GetByUserId()
     {
       var user = HttpContext.User;

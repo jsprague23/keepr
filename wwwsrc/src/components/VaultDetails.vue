@@ -1,6 +1,6 @@
 <template>
   <div class="VaultDetails">
-    <h1 class="mt-5 h1">Vault Details</h1>
+    <h1>Vault Details</h1>
     <!-- <h1>For</h1> -->
     <!-- <h1>{{Vault.name}}</h1> -->
     <div class="card-columns">
@@ -11,6 +11,12 @@
           <h5>{{Keeps.Description}}</h5>
           <h5>{{Keeps.Views}}</h5>
           <h5>{{Keeps.KeepCount}}</h5>
+          <select @ click="editKeep(Keep)" v-model="selected">
+              <option disabled value="vaultId">Please select one</option>
+              <option @click="">Public</option>
+              <option @click="">Private</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
           <div v-if="currentUser">
             <button class "btn btn-danger" @click="deleteKeep">Delete</button>
             <button class="btn btn-warning" @click="editVault">Edit Vault</button>
@@ -29,6 +35,7 @@
     name: 'VaultDetails',
 
     data() {
+      selected:''
       return {
         showModal: 0,
         newKeep: {
@@ -64,6 +71,9 @@
       editVault(id) {
         this.$store.dispatch('editVault', id)
       },
+      editKeep(id){
+        this.$store.dispatch('editKeep',id)
+      }
       toggleModal(n) {
         this.showModal += n
       },

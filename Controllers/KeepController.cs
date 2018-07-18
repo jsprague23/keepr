@@ -12,13 +12,13 @@ namespace API_Users.Controllers
     private readonly KeepRepository _db;
     public KeepController(KeepRepository repo)
     {
-      _db = repo;  
+      _db = repo;
     }
     [HttpPost]
     [Authorize]
     public Keep CreateKeep([FromBody]Keep newKeep)
     {
-      if(ModelState.IsValid)
+      if (ModelState.IsValid)
       {
         var user = HttpContext.User;
         newKeep.UserId = user.Identity.Name;
@@ -45,13 +45,18 @@ namespace API_Users.Controllers
       return _db.GetbyUserId(id);
     }
     //edit Keep
-    [HttpPut("{id}")]
     [Authorize]
+    [HttpPut("{id}")]
     public Keep EditKeep(int id, [FromBody]Keep newKeep)
     {
       return _db.EditKeep(id, newKeep);
     }
-
-    
+    [Authorize]
+    [HttpDelete("{id}")]
+    public void DeleteKeep(int id)
+    {
+    }
   }
+
+
 }
