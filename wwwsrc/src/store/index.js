@@ -24,7 +24,8 @@ export default new vuex.Store({
     currentUser: {},
     Vaults: [],
     Keeps: [],
-    userKeeps: []
+    userKeeps: [],
+    vaultKeeps:[]
   },
   mutations: {
     deleteUser(state) {
@@ -39,11 +40,11 @@ export default new vuex.Store({
     },
     setKeeps(state,Keeps){
       console.log(Keeps)
-      state.userKeeps = Keeps
-    },
-    setUserKeeps(state,Keeps){
-      console.log(Keeps)
       state.Keeps = Keeps
+    },
+    setUserKeeps(state,userKeeps){
+      console.log(userKeeps)
+      state.userKeeps = userKeeps
     }
 
   },
@@ -100,7 +101,6 @@ export default new vuex.Store({
     },
 
     //create stuff
-
     createVaultKeep({commit,dispatch,state},vaultKeep){
       api.post("/api/VaultKeep/"+ vaultKeep.keepId, vaultKeep)
       .then(res=>{
@@ -115,6 +115,8 @@ export default new vuex.Store({
       api.post("/api/Vault", vault)
       .then(res=>{
         console.log(res.data)
+        dispatch("getVaults")
+
       })
       .catch(err=>{
         console.log(err)
@@ -124,6 +126,7 @@ export default new vuex.Store({
       api.post("/api/Keep", keep)
       .then(res=>{
         console.log(res.data)
+        dispatch("getKeeps")
       })
       .catch(err=>{
         console.log(err)
@@ -149,7 +152,7 @@ export default new vuex.Store({
       api.get('/api/Keep')
       .then(res=>{
         console.log(res)
-        commit('setKeeps',res.data.Keeps)
+        commit('setKeeps',res.data)
       })
       .catch(err=>{
         console.log(err)

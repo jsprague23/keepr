@@ -1,8 +1,8 @@
 <template>
   <div class="VaultDetails">
     <h1 class="mt-5 h1">Vault Details</h1>
-    <h1>For</h1>
-    <!-- <h1>{{Vaults.name}}</h1> -->
+    <!-- <h1>For</h1> -->
+    <!-- <h1>{{Vault.name}}</h1> -->
     <div class="card-columns">
       <div v-for="Keep in Keeps">
         <div class="card col-6">

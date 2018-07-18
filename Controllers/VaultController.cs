@@ -54,5 +54,10 @@ namespace API_Users.Controllers
     {
       return _db.EditVault(id, newVault);
     }
+    [Authorize]
+     [HttpDelete("{id}")]
+        public void DeleteVault(int id)
+        {
+        }
   }
 }
