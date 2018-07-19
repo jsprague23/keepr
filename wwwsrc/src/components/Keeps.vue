@@ -6,12 +6,12 @@
         <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
           <h1 class="card-title titles">{{Keep.name}}</h1>
         </router-link>
-        <h3 class="logoFont">{{Keep.Description}}</h3>
-        <h4 class="logoFont">Keep Author: {{currentUser}}</h4>
-        <h4 class="logoFont">Views: {{Keep.Views}}</h4>
-        <h4 class="logoFont">Keeps: {{Keep.KeepCount}}</h4>
+        <h4 class="logoFont">Description:{{Keep.description}}</h4>
+        <!-- <h4 class="logoFont">Keep Author: {{User.username}}</h4> -->
+        <h4 class="logoFont">Views: {{Keep.views}}</h4>
+        <h4 class="logoFont">Keeps: {{Keep.keepCount}}</h4>
         <h4 class="logoFont">{{Keep.image}}</h4>
-        <button v-if="user.id == keep.userid" class="btn btn-danger" @click="deleteKeep(Keep._id)">Delete</button>
+        <button v-if="currentUser.id == Keep.userId"class="btn btn-danger" @click="deleteKeep(Keep._id)">Delete</button>
         <!-- <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Public</button>
         <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Private</button> -->
         
@@ -35,7 +35,7 @@
                 <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
-                <button @click="toggleModal" type="submit">Create Keep</button>
+                <button type="submit">Create Keep</button>
               </form>
             </div>
           </modal>
@@ -49,7 +49,6 @@
 
 <script>
   import Modal from './Modal'
-  import router from '../router/index'
   export default {
     name: 'Keeps',
     data() {
@@ -68,6 +67,7 @@
     },
     mounted() {
       this.$store.dispatch("getKeeps")
+      this.$store.dispatch("authenticate")
 
     },
     components: {

@@ -1,31 +1,56 @@
 <template>
   <div class="VaultDetails">
     <h1>Vault Details</h1>
-    <!-- <h1>For</h1> -->
-    <!-- <h1>{{Vault.name}}</h1> -->
     <div class="card-columns">
       <div v-for="Keep in Keeps">
         <div class="card col-6">
-          <h1 class="card-title titles">{{Keeps.name}}</h1>    
-          <h5>{{Keeps.Image}}</h5>
-          <h5>{{Keeps.Description}}</h5>
-          <h5>{{Keeps.Views}}</h5>
-          <h5>{{Keeps.KeepCount}}</h5>
-          <select @ click="editKeep(Keep)" v-model="selected">
-              <option disabled value="vaultId">Please select one</option>
-              <option @click="">Public</option>
-              <option @click="">Private</option>
-            </select>
-            <span>Selected: {{ selected }}</span>
+          <h1 class="card-title titles">{{Keep.name}}</h1>
+          <h5>{{Keep.image}}</h5>
+          <h5>Description:{{Keep.description}}</h5>
+          <h5>Views:{{Keep.views}}</h5>
+          <h5>Keeps:{{Keep.keepCount}}</h5>
+          <select @ click="editKeep(Keep)" v-model="pubPriv">
+            <option disabled value="vaultId">Please select one</option>
+            <option @click="editKeep">Public</option>
+            <option @click="editKeep">Private</option>
+          </select>
+          <span>Selected: {{ pubPriv }}</span>
           <div v-if="currentUser">
             <button class "btn btn-danger" @click="deleteKeep">Delete</button>
-            <button class="btn btn-warning" @click="editVault">Edit Vault</button>
+            <button class="btn btn-warning" @click="editKeep">Edit</button>
           </div>
         </div>
-      </div>
-      
+      </div>  
+      <select @ click="addKeep(Keep)" v-model="selected">
+        <option disabled value="vaultId">Please select one</option>
+        <option v-for="Vault in Vaults">{{vault.name}}</option>
+        <!-- why is vaults undefined? -->
+      </select>
+      <span>Selected: {{ selected }}</span>
     </div>
+    
+    <div class="row">
+      <div class="card-columns">
+        <div>
+          <button @click="toggleModal(1)">Create a Keep</button>
+          <modal :toggle="showModal">
+            <div slot="header">
+              <h3>Create Keep</h3>
+            </div>
+            <div>
+              <form @submit.prevent="createKeep">
+                <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
+                <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
+                <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
+                <button type="submit">Create Keep</button>
+              </form>
+            </div>
+          </modal>
 
+        </div>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,29 +60,34 @@
     name: 'VaultDetails',
 
     data() {
-      selected:''
+      pubPriv: ''
+      selected: ''
       return {
         showModal: 0,
         newKeep: {
           name: '',
-          Image:'',
+          Image: '',
           Description: ''
         }
 
       }
     },
-    components:{
+    components: {
       Modal
     },
     mounted() {
       this.$store.dispatch("getVaultKeeps")
-      
+      this.$store.dispatch('getVaults')
+
     },
     computed: {
       Keeps() {
         return this.$store.state.Keeps
       },
-      currentUser(){
+      Vaults(){
+        return this.$store.state.Vaults
+      },
+      currentUser() {
         return this.$store.state.currentUser
       }
     },
@@ -65,17 +95,23 @@
       deleteKeep(id) {
         this.$store.dispatch('deleteKeep', id)
       },
-      createKeep(){
-        this.$store.dispatch('createKeep',this.newKeep)
+      createKeep() {
+        this.$store.dispatch('createKeep', this.newKeep)
       },
-      editVault(id) {
-        this.$store.dispatch('editVault', id)
+      editKeep(id) {
+        this.$store.dispatch('editKeep', id)
+        alert("Coming Soon!")
       },
-      editKeep(id){
-        this.$store.dispatch('editKeep',id)
-      }
       toggleModal(n) {
         this.showModal += n
+      },
+      addKeep(Keep) {
+        Keep.keepCount++
+          this.$store.dispatch('editKeep', id)
+        this.$store.dispatch('createVaultKeep', KeepId, this.vaultId)
+        alert("Added to Keeps!")
+        //send put request to update keep
+        // dispatch create vault keep passing it the keepid & this.vaultId
       },
     }
   }
