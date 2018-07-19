@@ -45,6 +45,8 @@ namespace API_Users.Repositories
                 UPDATE keeps SET
                     name = @Name,
                     body = @Body,
+                    views=@Views,
+                    keepCount=@KeepCount,
                     description = @Description,
                     image = @Image
                     WHERE id = @Id

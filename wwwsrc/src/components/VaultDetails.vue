@@ -1,10 +1,12 @@
 <template>
   <div class="VaultDetails">
-    <h1>Vault Details</h1>
+    <h1>Vault Details for {{Vault.name}}</h1>
     <div class="card-columns">
-      <div v-for="Keep in Keeps">
+      <div v-for="Keep in VaultKeeps">
         <div class="card col-6">
-          <h1 class="card-title titles">{{Keep.name}}</h1>
+            <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
+                <h1 class="card-title titles">{{Keep.name}}</h1>
+              </router-link>
           <h5>{{Keep.image}}</h5>
           <h5>Description:{{Keep.description}}</h5>
           <h5>Views:{{Keep.views}}</h5>
@@ -19,14 +21,13 @@
             <button class "btn btn-danger" @click="deleteKeep">Delete</button>
             <button class="btn btn-warning" @click="editKeep">Edit</button>
           </div>
+          <select @ click="addKeep(Keep)" v-model="vaultId">
+            <option disabled >Please select one</option>
+            <option v-for="Vault in Vaults" value="vault.id">{{Vault.name}}</option>
+          </select>
         </div>
       </div>  
-      <select @ click="addKeep(Keep)" v-model="selected">
-        <option disabled value="vaultId">Please select one</option>
-        <option v-for="Vault in Vaults">{{vault.name}}</option>
-        <!-- why is vaults undefined? -->
-      </select>
-      <span>Selected: {{ selected }}</span>
+      <span>Selected: {{ vaultId }}</span>
     </div>
     
     <div class="row">
@@ -60,9 +61,10 @@
     name: 'VaultDetails',
 
     data() {
-      pubPriv: ''
-      selected: ''
+      
       return {
+        pubPriv: '',
+        vaultId:'',
         showModal: 0,
         newKeep: {
           name: '',
@@ -81,7 +83,7 @@
 
     },
     computed: {
-      Keeps() {
+      VaultKeeps() {
         return this.$store.state.Keeps
       },
       Vaults(){
@@ -92,6 +94,10 @@
       }
     },
     methods: {
+      views(keep){
+        keep.views++
+        this.$store.dispatch('editKeep', keep)
+      },
       deleteKeep(id) {
         this.$store.dispatch('deleteKeep', id)
       },
@@ -108,11 +114,9 @@
       addKeep(Keep) {
         Keep.keepCount++
           this.$store.dispatch('editKeep', id)
-        this.$store.dispatch('createVaultKeep', KeepId, this.vaultId)
+        this.$store.dispatch('createVaultKeep', {KeepId:keep.id, VaultId:this.vaultId, UserId: currentUser.id})
         alert("Added to Keeps!")
-        //send put request to update keep
-        // dispatch create vault keep passing it the keepid & this.vaultId
-      },
+      }
     }
   }
 

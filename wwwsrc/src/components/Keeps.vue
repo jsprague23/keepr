@@ -2,7 +2,7 @@
   <div class="Keeps container-fluid d-flex justify-content-center">
     <h1>Find Disinteresting Things!</h1>
     <div class="row">
-      <div v-for="Keep in Keeps" class="col">
+      <div v-for="Keep in Keeps" class="col" :key="Keep.id">
         <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
           <h1 class="card-title titles">{{Keep.name}}</h1>
         </router-link>
@@ -10,16 +10,16 @@
         <!-- <h4 class="logoFont">Keep Author: {{User.username}}</h4> -->
         <h4 class="logoFont">Views: {{Keep.views}}</h4>
         <h4 class="logoFont">Keeps: {{Keep.keepCount}}</h4>
-        <h4 class="logoFont">{{Keep.image}}</h4>
-        <button v-if="currentUser.id == Keep.userId"class="btn btn-danger" @click="deleteKeep(Keep._id)">Delete</button>
+        <img>{{Keep.image}}</img>
+        <button v-if="currentUser.id == Keep.userId"class="btn btn-danger" @click="deleteKeep(Keep.id)">Delete</button>
         <!-- <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Public</button>
         <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Private</button> -->
         
-        <select @ click="addKeep(Keep)" v-model="selected">
-          <option disabled value="vaultId">Please select one</option>
-          <option v-for="Vault in Vaults">{{vault.name}}</option>
-        </select>
-        <span>Selected: {{ selected }}</span>
+        <select @ click="addKeep(Keep)" v-model="vaultId">
+            <option disabled >Please select one</option>
+            <option v-for="Vault in Vaults" value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
+          </select>
+        <span>Selected: {{ vaultId }}</span>
       </div>
     </div>
     <div class="row">
@@ -52,9 +52,9 @@
   export default {
     name: 'Keeps',
     data() {
-      selected: ''
       message: ''
       return {
+        vaultId: '',
         showModal: 0,
         newKeep: {
           name: '',
@@ -68,6 +68,7 @@
     mounted() {
       this.$store.dispatch("getKeeps")
       this.$store.dispatch("authenticate")
+      this.$store.dispatch("getVaults")
 
     },
     components: {
@@ -77,24 +78,23 @@
       Keeps() {
         return this.$store.state.Keeps
       },
+      Vaults(){
+        return this.$store.state.Vaults
+      },
       currentUser() {
         return this.$store.state.currentUser
       }
     },
     methods: {
-      // keep.public=!public
-
       views(Keep) {
         keep.views++
-          this.$store.dispatch('editKeep', id)
+          this.$store.dispatch('editKeep', keep)
       },
       addKeep(Keep) {
         Keep.keepCount++
           this.$store.dispatch('editKeep', id)
-        this.$store.dispatch('createVaultKeep', KeepId, this.vaultId)
+        this.$store.dispatch('createVaultKeep', {KeepId:keep.id, VaultId:this.vaultId, UserId: currentUser.id})
         alert("Added to Keeps!")
-        //send put request to update keep
-        // dispatch create vault keep passing it the keepid & this.vaultId
       },
       deleteKeep(id) {
         this.$store.dispatch('deleteKeep', id)

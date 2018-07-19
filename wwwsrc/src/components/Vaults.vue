@@ -1,15 +1,21 @@
 <template>
   <div class="Vaults container-fluid d-flex justify-content-center">
-    <h1>My Vaults</h1>
     <div class="row">
-      <div v-for="Vault in Vaults" class="col">
-        <router-link :to="{name: 'VaultDetails', params:{id: Vault.id}}">
-          <h1 class="card-title titles">{{Vault.name}}</h1>
-        </router-link>
-        <h3 class="logoFont">{{Vault.Description}}</h3>
-        <h4 class="logoFont">Vault Author: {{currentUser.name}}</h4>
-        <button class="btn btn-danger" @click="deleteVault(id)">Delete</button>
+      <h1 class="card-title titles">My Vaults</h1>
+    </div>
+    <div class="row">
+      <div class="card-columns">
+        <div v-for="Vault in Vaults">
+          <div class="card col-6">
+            <router-link :to="{name: 'VaultDetails', params:{id: Vault.id}}">
+              <h1 class="card-title titles">{{Vault.name}}</h1>
+            </router-link>
+            <h3 class="logoFont">Description:{{Vault.Description}}</h3>
+            <h4 class="logoFont">Vault Author: {{currentUser.name}}</h4>
+            <button class="btn btn-danger" @click="deleteVault(id)">Delete</button>
+          </div>
         </div>
+      </div>
     </div>
     <div class="row">
       <div class="card-columns">
@@ -28,7 +34,7 @@
               </form>
             </div>
           </modal>
-          
+
         </div>
       </div>
     </div>
@@ -51,7 +57,7 @@
 
       }
     },
-    components:{
+    components: {
       Modal
     },
     mounted() {
@@ -70,8 +76,8 @@
       deleteVault(id) {
         this.$store.dispatch('deleteVault', id)
       },
-      createVault(){
-        this.$store.dispatch('createVault',this.newVault)
+      createVault() {
+        this.$store.dispatch('createVault', this.newVault)
       },
       toggleModal(n) {
         this.showModal += n
