@@ -1,13 +1,13 @@
 <template>
   <div class="VaultDetails">
-    <h1>Vault Details for {{Vault.name}}</h1>
+    <h1>Vault Details for {{activeVault.name}}</h1>
     <div class="card-columns">
       <div v-for="Keep in VaultKeeps">
         <div class="card col-6">
             <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
                 <h1 class="card-title titles">{{Keep.name}}</h1>
-              </router-link>
-          <h5>{{Keep.image}}</h5>
+            </router-link>
+          <img :src="Keep.image">
           <h5>Description:{{Keep.description}}</h5>
           <h5>Views:{{Keep.views}}</h5>
           <h5>Keeps:{{Keep.keepCount}}</h5>
@@ -23,7 +23,7 @@
           </div>
           <select @ click="addKeep(Keep)" v-model="vaultId">
             <option disabled >Please select one</option>
-            <option v-for="Vault in Vaults" value="vault.id">{{Vault.name}}</option>
+            <option v-for="Vault in Vaults" value="Vault.id">{{Vault.name}}</option>
           </select>
         </div>
       </div>  
@@ -59,7 +59,6 @@
   import Modal from './Modal'
   export default {
     name: 'VaultDetails',
-
     data() {
       
       return {
@@ -79,15 +78,16 @@
     },
     mounted() {
       this.$store.dispatch("getVaultKeeps")
-      this.$store.dispatch('getVaults')
-
-    },
+      },
     computed: {
+      Vaults(){
+        return this.$store.state.Vaults
+      },
       VaultKeeps() {
         return this.$store.state.Keeps
       },
-      Vaults(){
-        return this.$store.state.Vaults
+      activeVault(){
+        return this.$store.state.activeVault
       },
       currentUser() {
         return this.$store.state.currentUser

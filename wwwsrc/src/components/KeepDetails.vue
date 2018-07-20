@@ -1,19 +1,15 @@
 <template>
   <div class="KeepDetails">
-    <h1 class="mt-5 h1">Keep Details</h1>
-    <h1>For</h1>
-    <h1>{{Keep.name}}</h1>
+    <h1>Keep Details For {{activeKeep.name}}</h1>
     <div class="card-columns">
-      <div v-for="Keep in Keeps">
-        <div class="card col-6">
-            <h4 class="logoFont">Description:{{Keep.description}}</h4>
-            <!-- <h4 class="logoFont">Keep Author: {{User.username}}</h4> -->
-            <h4 class="logoFont">Views: {{Keep.views}}</h4>
-            <h4 class="logoFont">Keeps: {{Keep.keepCount}}</h4>
-            <img>{{Keep.image}}</img>
-            <button v-if="currentUser.id == Keep.userId"class="btn btn-danger" @click="deleteKeep(Keep.id)">Delete</button>
-            <button v-if="currentUser.id == Keep.userId"class="btn btn-warning" @click="editKeep(Keep.id)">Edit</button>          
-        </div>
+      <div class="card col-6">
+        <h4 class="logoFont">Description:{{activeKeep.description}}</h4>
+        <!-- <h4 class="logoFont">Keep Author: {{User.username}}</h4> -->
+        <h4 class="logoFont">Views: {{activeKeep.views}}</h4>
+        <h4 class="logoFont">Keeps: {{activeKeep.keepCount}}</h4>
+        <img :src="activeKeep.image">
+        <button v-if="currentUser.id == activeKeep.userId" class="btn btn-danger" @click="deleteKeep(activeKeep.id)">Delete</button>
+        <button v-if="currentUser.id == activeKeep.userId" class="btn btn-warning" @click="editKeep(activeKeep.id)">Edit</button>
       </div>
     </div>
   </div>
@@ -30,11 +26,16 @@
     },
     mounted() {
       this.$store.dispatch("getKeeps")
-
     },
     computed: {
-      vaults() {
-        return this.$store.state.keeps
+      currentUser(){
+        return this.$store.state.currentUser
+      },
+      Keeps() {
+        return this.$store.state.Keeps
+      },
+      activeKeep() {
+        this.$store.dispatch('activeKeep')
       }
     },
     methods: {
@@ -42,7 +43,7 @@
         this.$store.dispatch('deleteKeep', id)
       },
       editKeep(id) {
-        this.$store.dispatch('editKeep',id)
+        this.$store.dispatch('editKeep', id)
         alert("Coming Soon!")
       }
     }

@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div v-for="Vault in Vaults">
           <div class="card col-6">
-            <router-link :to="{name: 'VaultDetails', params:{id: Vault.id}}">
+            <router-link @click.native="activeVault(Vault)" :to="{name: 'VaultDetails', params:{id: Vault.id}}">
               <h1 class="card-title titles">{{Vault.name}}</h1>
             </router-link>
             <h3 class="logoFont">Description:{{Vault.Description}}</h3>
@@ -81,6 +81,9 @@
       },
       toggleModal(n) {
         this.showModal += n
+      },
+      activeVault(Vault) {
+        this.$store.dispatch('activeVault', Vault)
       },
     }
   }

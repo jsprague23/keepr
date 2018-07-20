@@ -3,14 +3,14 @@
     <h1>Find Disinteresting Things!</h1>
     <div class="row">
       <div v-for="Keep in Keeps" class="col" :key="Keep.id">
-        <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
+        <router-link @click.native="activeKeep(Keep)" :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
           <h1 class="card-title titles">{{Keep.name}}</h1>
         </router-link>
         <h4 class="logoFont">Description:{{Keep.description}}</h4>
         <!-- <h4 class="logoFont">Keep Author: {{User.username}}</h4> -->
         <h4 class="logoFont">Views: {{Keep.views}}</h4>
         <h4 class="logoFont">Keeps: {{Keep.keepCount}}</h4>
-        <img>{{Keep.image}}</img>
+        <img :src="Keep.image">
         <button v-if="currentUser.id == Keep.userId"class="btn btn-danger" @click="deleteKeep(Keep.id)">Delete</button>
         <!-- <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Public</button>
         <button v-if="user.id == keep.userid" class="btn btn-warning" @click="">Make Private</button> -->
@@ -106,6 +106,9 @@
       toggleModal(n) {
         this.showModal += n
       },
+      activeKeep(Keep) {
+        this.$store.dispatch('activeKeep', Keep)
+      }
     }
   }
 
