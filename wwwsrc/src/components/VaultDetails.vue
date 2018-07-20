@@ -2,15 +2,15 @@
   <div class="VaultDetails">
     <h1>Vault Details for {{activeVault.name}}</h1>
     <div class="card-columns">
-      <div v-for="Keep in VaultKeeps">
+      <div v-for="VaultKeep in VaultKeeps">
         <div class="card col-6">
             <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
-                <h1 class="card-title titles">{{Keep.name}}</h1>
+                <h1 class="card-title titles">{{VaultKeep.name}}</h1>
             </router-link>
-          <img :src="Keep.image">
-          <h5>Description:{{Keep.description}}</h5>
-          <h5>Views:{{Keep.views}}</h5>
-          <h5>Keeps:{{Keep.keepCount}}</h5>
+          <img :src="VaultKeep.image">
+          <h5>Description:{{VaultKeep.description}}</h5>
+          <h5>Views:{{VaultKeep.views}}</h5>
+          <h5>Keeps:{{VaultKeep.keepCount}}</h5>
           <select @ click="editKeep(Keep)" v-model="pubPriv">
             <option disabled value="vaultId">Please select one</option>
             <option @click="editKeep">Public</option>
@@ -78,8 +78,12 @@
     },
     mounted() {
       this.$store.dispatch("getVaultKeeps")
+      this.$store.dispatch("getKeeps")
       },
     computed: {
+      Keeps(){
+        this.$store.state.Keeps
+      },
       Vaults(){
         return this.$store.state.Vaults
       },

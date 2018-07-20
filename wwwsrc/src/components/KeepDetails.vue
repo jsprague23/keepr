@@ -25,7 +25,7 @@
       }
     },
     mounted() {
-      this.$store.dispatch("getKeeps")
+      this.$store.dispatch("activeKeep")
     },
     computed: {
       currentUser(){
@@ -34,7 +34,7 @@
       Keeps() {
         return this.$store.state.Keeps
       },
-      activeKeep() {
+      activeKeep() {        
         this.$store.dispatch('activeKeep')
       }
     },

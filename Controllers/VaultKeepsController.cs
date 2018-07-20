@@ -27,7 +27,7 @@ namespace API_Users.Controllers
       return null;
     }
     [HttpGet("{id}")]
-    public VaultKeeps GetByVaultId(int id)
+    public IEnumerable<Keep> GetByVaultId(int id)
     {
       return _db.GetByVaultId(id);
     }

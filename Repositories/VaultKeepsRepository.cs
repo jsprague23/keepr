@@ -30,9 +30,9 @@ namespace API_Users.Repositories
       return _db.Query<VaultKeeps>("SELECT * FROM vaultKeeps WHERE userId = @id;", new { id });
     }
     // GetbyVaultId
-    public VaultKeeps GetByVaultId(int id)
+    public IEnumerable<Keep> GetByVaultId(int vaultId)
     {
-      return _db.QueryFirstOrDefault<VaultKeeps>("SELECT * FROM vaults WHERE id = @id;", new { id });
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE id = @id;", new { vaultId });
     }
     
     // Delete
