@@ -35,7 +35,7 @@
         return this.$store.state.Keeps
       },
       activeKeep() {        
-        this.$store.dispatch('activeKeep')
+        this.$store.state.activeKeep
       }
     },
     methods: {

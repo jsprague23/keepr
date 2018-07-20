@@ -32,7 +32,7 @@ namespace API_Users.Repositories
     // GetbyVaultId
     public IEnumerable<Keep> GetByVaultId(int vaultId)
     {
-      return _db.Query<Keep>("SELECT * FROM keeps WHERE id = @id;", new { vaultId });
+      return _db.Query<Keep>("SELECT * FROM vaults WHERE id = @vaultId;", new { vaultId });
     }
     
     // Delete

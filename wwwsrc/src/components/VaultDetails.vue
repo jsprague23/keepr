@@ -78,7 +78,8 @@
     },
     mounted() {
       this.$store.dispatch("getVaultKeeps")
-      this.$store.dispatch("getKeeps")
+      this.$store.dispatch("activeVault")
+      
       },
     computed: {
       Keeps(){
@@ -91,7 +92,7 @@
         return this.$store.state.Keeps
       },
       activeVault(){
-        return this.$store.state.activeVault
+        return this.$store.state.activeVault        
       },
       currentUser() {
         return this.$store.state.currentUser

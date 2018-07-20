@@ -111,7 +111,7 @@ export default new vuex.Store({
     //create stuff
     activeVault({commit,dispatch,state},vault){
       commit("setActiveVault", vault)
-    },
+      },
     activeKeep({commit,dispatch,state},keep){
       commit("setActiveKeep", keep)
     },
